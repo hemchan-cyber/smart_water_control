@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome | Smart Water Controller</title>
+  <!-- PWA Manifest -->
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="theme-color" content="#2196f3">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #0066cc, #00cc99);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <img src="static/logo.png" alt="Logo" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); border-radius: 10px;">
+  <h1 style="color: #fff; text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">🌱 Welcome to Smart Water Controller</h1>
+  <p style="color: #eee; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Redirecting to login...</p>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 2500); // wait 2.5 seconds
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("{{ url_for('static', filename='service-worker.js') }}")
+    .then(reg => console.log("Service Worker Registered"))
+    .catch(err => console.error("SW registration failed", err));
+  }
+  </script>
+</body>
+</html>
